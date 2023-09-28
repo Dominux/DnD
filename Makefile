@@ -1,2 +1,2 @@
 up:
-	cd dnd_server && cargo run || cd -
+	docker compose up -d --build --force-recreate --remove-orphans

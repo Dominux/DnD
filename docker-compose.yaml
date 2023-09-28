@@ -1,0 +1,25 @@
+version: '3.9'
+
+x-dnd-server-envs: &dnd-server-envs
+  TELOXIDE_TOKEN: ${TELEGRAM_BOT_TOKEN}
+
+services:
+  dnd_server:
+    container_name: dnd_server
+    build:
+      context: ./dnd_server
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      <<: [*dnd-server-envs]
+    tty: true
+
+  llm_wrapper:
+    container_name: llm_wrapper
+    build:
+      context: ./llm_wrapper
+      dockerfile: Dockerfile
+    volumes:
+      - ./llm_wrapper/app:/app/app
+    tty: true

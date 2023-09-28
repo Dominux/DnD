@@ -1,0 +1,7 @@
+service HelloWorld {
+  rpc SayHi(Message) returns (Message) {}
+}
+
+message Message {
+  string msg = 1;
+}
